@@ -1,7 +1,7 @@
 """管理后台业务逻辑。"""
 
 import secrets
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from sqlalchemy import or_, update
 from sqlalchemy.orm import Session
@@ -135,7 +135,7 @@ def generate_registration_keys(
 ) -> list[RegistrationKeyOut]:
     expires_at = None
     if expire_days:
-        expires_at = datetime.now(UTC).replace(tzinfo=None) + timedelta(days=expire_days)
+        expires_at = datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(days=expire_days)
     keys = []
     for _ in range(count):
         key = RegistrationKey(code=_gen_key("YUYUE"), created_by=admin_id, expires_at=expires_at)
@@ -148,7 +148,7 @@ def generate_registration_keys(
 
 def _registration_key_out(key: RegistrationKey) -> RegistrationKeyOut:
     status = key.status
-    now = datetime.now(UTC).replace(tzinfo=None)
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     if status == KeyStatus.UNUSED.value and key.expires_at and key.expires_at < now:
         status = KeyStatus.EXPIRED.value
     return RegistrationKeyOut(
@@ -173,7 +173,7 @@ def generate_recovery_key(db: Session, admin_id: int, user_id: int) -> RecoveryK
     user = db.get(User, user_id)
     if not user:
         raise_app(ErrorCode.NOT_FOUND, "用户不存在")
-    now = datetime.now(UTC).replace(tzinfo=None)
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     db.query(RecoveryKey).filter(
         RecoveryKey.user_id == user_id,
         RecoveryKey.status == KeyStatus.UNUSED.value,
@@ -311,7 +311,7 @@ def review_application(
     if not app:
         raise_app(ErrorCode.NOT_FOUND, "申请不存在")
 
-    now = datetime.now(UTC).replace(tzinfo=None)
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     result = db.execute(
         update(AuthorApplication)
         .where(

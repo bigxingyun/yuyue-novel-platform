@@ -13,7 +13,6 @@
 [![Vue](https://img.shields.io/badge/vue-3.5-4FC08D?logo=vue.js&logoColor=white)](https://vuejs.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115%2B-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![SQLite](https://img.shields.io/badge/database-SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
 [项目介绍](#-项目介绍) ·
 [环境依赖](#-环境依赖-prerequisites) ·
@@ -74,7 +73,7 @@
 
 | 项目 | 要求 |
 |------|------|
-| 操作系统 | Windows / macOS / Linux（开发）；Ubuntu 20.04 / 22.04 / 24.04（生产部署） |
+| 操作系统 | Windows / Linux（开发）；Ubuntu 20.04 / 22.04 / 24.04（生产部署） |
 | Python | **3.10+**（CI 覆盖 3.10 / 3.11 / 3.12） |
 | Node.js | **18+**（推荐 20 LTS，部署脚本会在低于 18 时自动安装 20 LTS） |
 | npm | 随 Node.js 安装（推荐 9+） |
@@ -342,11 +341,10 @@ GPL-3.0 意味着：你可以自由使用、修改、分发本项目（包括商
 
 ---
 
-## 贡献与文档
+## 文档
 
-- 贡献指南：[CONTRIBUTING.md](./CONTRIBUTING.md)
-- 开发规范（命名、响应协议、错误码）：[docs/CONVENTIONS.md](./docs/CONVENTIONS.md)
 - 文档索引与阅读顺序：[docs/README.md](./docs/README.md)
+- 开发规范（命名、响应协议、错误码）：[docs/CONVENTIONS.md](./docs/CONVENTIONS.md)
 - 产品需求与技术规格：[欲阅需求分析.md](./欲阅需求分析.md)
 
-欢迎提交 Issue 与 PR。
+如有问题或建议，欢迎提交 Issue。

@@ -1,6 +1,6 @@
 """认证业务逻辑。"""
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import update
 from sqlalchemy.exc import IntegrityError
@@ -71,14 +71,14 @@ def verify_registration_key(db: Session, code: str) -> None:
     key = db.query(RegistrationKey).filter(RegistrationKey.code == code).first()
     if not key or key.status != KeyStatus.UNUSED.value:
         raise_app(ErrorCode.REGISTRATION_KEY_INVALID)
-    if key.expires_at and key.expires_at < datetime.now(UTC).replace(tzinfo=None):
+    if key.expires_at and key.expires_at < datetime.now(timezone.utc).replace(tzinfo=None):
         key.status = KeyStatus.EXPIRED.value
         db.commit()
         raise_app(ErrorCode.REGISTRATION_KEY_INVALID)
 
 
 def _consume_registration_key(db: Session, code: str, user_id: int) -> None:
-    now = datetime.now(UTC).replace(tzinfo=None)
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     result = db.execute(
         update(RegistrationKey)
         .where(
@@ -144,12 +144,12 @@ def recover_password(
 
     if not user or not key or key.status != KeyStatus.UNUSED.value:
         raise_app(ErrorCode.REGISTRATION_KEY_INVALID, invalid_msg)
-    if key.expires_at and key.expires_at < datetime.now(UTC).replace(tzinfo=None):
+    if key.expires_at and key.expires_at < datetime.now(timezone.utc).replace(tzinfo=None):
         key.status = KeyStatus.EXPIRED.value
         db.commit()
         raise_app(ErrorCode.REGISTRATION_KEY_INVALID, invalid_msg)
 
-    now = datetime.now(UTC).replace(tzinfo=None)
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
     result = db.execute(
         update(RecoveryKey)
         .where(

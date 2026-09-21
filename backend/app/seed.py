@@ -1,6 +1,6 @@
 """初始化数据库与测试演示数据。"""
 
-from datetime import UTC, date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 from sqlalchemy.orm import Session
 
@@ -228,7 +228,7 @@ def _seed(db: Session) -> None:
                 code="YUYUE-TEST-EXP",
                 status=KeyStatus.UNUSED.value,
                 created_by=admin.id,
-                expires_at=datetime.now(UTC).replace(tzinfo=None) + timedelta(days=30),
+                expires_at=datetime.now(timezone.utc).replace(tzinfo=None) + timedelta(days=30),
             ),
         ],
     )

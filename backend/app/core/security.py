@@ -1,6 +1,6 @@
 """密码哈希与 JWT 工具。"""
 
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from jose import JWTError, jwt
@@ -26,7 +26,7 @@ def verify_password(plain: str, hashed: str) -> bool:
 
 
 def _create_token(subject: str | int, token_type: str, expires_delta: timedelta) -> str:
-    expire = datetime.now(UTC) + expires_delta
+    expire = datetime.now(timezone.utc) + expires_delta
     payload = {
         "sub": str(subject),
         "type": token_type,
