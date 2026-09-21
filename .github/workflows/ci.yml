@@ -28,7 +28,7 @@ jobs:
       ACCESS_TOKEN_EXPIRE_MINUTES: '120'
       REFRESH_TOKEN_EXPIRE_DAYS: '7'
       UPLOAD_DIR: ./uploads
-      CORS_ORIGINS: http://localhost:5173
+      CORS_ORIGINS: '["http://localhost:5173"]'
     defaults:
       run:
         working-directory: backend
