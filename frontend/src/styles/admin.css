@@ -1,0 +1,203 @@
+/* 管理后台共用样式（由 AdminLayout 引入） */
+
+.admin-main .admin-page {
+  width: 100%;
+  max-width: none;
+}
+
+.admin-main .admin-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-main .admin-title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-main .admin-section {
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.admin-main .section-head {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 0 14px;
+}
+
+.admin-main .admin-table-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.admin-main .admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-main .admin-table th,
+.admin-main .admin-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-soft);
+  white-space: nowrap;
+}
+
+.admin-main .admin-table td.wrap {
+  white-space: normal;
+  max-width: 360px;
+}
+
+.admin-main .admin-table th {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-elevated);
+}
+
+.admin-main .admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-main .admin-hint {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.admin-main .admin-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.admin-main .status-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.admin-main .status-tag.unused,
+.admin-main .status-tag.pending {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.admin-main .status-tag.used,
+.admin-main .status-tag.approved,
+.admin-main .status-tag.published,
+.admin-main .status-tag.active {
+  background: rgba(45, 90, 74, 0.12);
+  color: var(--color-success);
+}
+
+.admin-main .status-tag.expired,
+.admin-main .status-tag.rejected,
+.admin-main .status-tag.banned,
+.admin-main .status-tag.unpublished {
+  background: rgba(180, 60, 60, 0.1);
+  color: #b43c3c;
+}
+
+.admin-main .key-code-cell {
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.admin-main .admin-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-main .admin-item {
+  padding: 18px 20px;
+}
+
+.admin-main .admin-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.admin-main .admin-item-reason {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0 0 8px;
+}
+
+.admin-main .admin-item-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0 0 12px;
+}
+
+.admin-main .admin-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-main .admin-item-note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.admin-main .admin-form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-main .admin-form-row .field-input {
+  min-width: 160px;
+}
+
+.admin-main .admin-form-row .field-input.narrow {
+  width: 100px;
+  min-width: 100px;
+}
+
+.admin-main .new-keys-banner {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(45, 90, 74, 0.08);
+  border: 1px solid rgba(45, 90, 74, 0.15);
+}
+
+.admin-main .new-keys-banner p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--color-success);
+}
+
+.admin-main .new-keys-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-main .new-key-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}

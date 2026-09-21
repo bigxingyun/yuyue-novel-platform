@@ -1,0 +1,21 @@
+[Unit]
+Description=Yuyue (FastAPI + Frontend SPA)
+Documentation=file://__YUYUE_ROOT__/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__YUYUE_USER__
+Group=__YUYUE_USER__
+WorkingDirectory=__YUYUE_ROOT__/backend
+Environment=PATH=__YUYUE_ROOT__/backend/.venv/bin:/usr/bin:/bin
+ExecStart=__YUYUE_ROOT__/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port __YUYUE_PORT__ --workers 1
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/var/log/yuyue/backend.log
+StandardError=append:/var/log/yuyue/backend-error.log
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+:root {
+  /* 色板：冷纸 + 深墨 + 酒红点缀 */
+  --color-bg: #f0efe8;
+  --color-bg-elevated: #f8f7f2;
+  --color-surface: #ffffff;
+  --color-ink: #14171e;
+  --color-text: #1a1d24;
+  --color-text-secondary: #5a6170;
+  --color-text-muted: #8b919c;
+  --color-border: #e0ddd4;
+  --color-border-soft: #eceae3;
+
+  --color-accent: #8b2942;
+  --color-accent-hover: #6e1f34;
+  --color-accent-soft: rgba(139, 41, 66, 0.08);
+  --color-accent-muted: rgba(139, 41, 66, 0.15);
+
+  --color-success: #2d5a4a;
+  --color-warning: #9a6b2f;
+
+  --shadow-sm: 0 1px 3px rgba(20, 23, 30, 0.05);
+  --shadow-md: 0 8px 28px rgba(20, 23, 30, 0.07);
+  --shadow-lg: 0 20px 52px rgba(20, 23, 30, 0.1);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  --font-sans: 'Noto Sans SC', system-ui, sans-serif;
+  --font-serif: 'Noto Serif SC', Georgia, serif;
+
+  /* 字号阶梯 */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-lg: 17px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+
+  /* 间距阶梯 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --header-height: 64px;
+  --tabbar-height: 60px;
+  --reader-max-width: 720px;
+  --content-max-width: 1200px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+
+  --transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #12141a;
+    --color-bg-elevated: #181b22;
+    --color-surface: #1e222b;
+    --color-ink: #f3f2ed;
+    --color-text: #eceae4;
+    --color-text-secondary: #a8adb8;
+    --color-text-muted: #6e7480;
+    --color-border: #2a2f3a;
+    --color-border-soft: #232830;
+    --color-accent-soft: rgba(200, 90, 120, 0.12);
+    --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.28);
+    --shadow-lg: 0 20px 52px rgba(0, 0, 0, 0.35);
+  }
+}
