@@ -95,6 +95,8 @@
 | `python-multipart` | ≥ 0.0.12 | 表单与文件上传 |
 | `aiofiles` | ≥ 24.0.0 | 异步文件读写 |
 
+开发与测试额外依赖（[`backend/requirements-dev.txt`](./backend/requirements-dev.txt)）：`pytest`、`httpx`（`starlette` 的 `TestClient` 必需，且它只是 fastapi 的 optional extra，必须显式安装）。
+
 前端（[`frontend/package.json`](./frontend/package.json)）：`vue@^3.5`、`vue-router@^4.4`、`pinia@^2.2`、`axios@^1.7`、`@phosphor-icons/vue@^2.2`；开发依赖 `vite@^6`、`typescript@~5.6`、`vue-tsc@^2.1`、`vitest@^3`。
 
 ### 第三方服务
@@ -138,6 +140,7 @@ python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
+pip install -r requirements-dev.txt   # 测试依赖（pytest、httpx），仅开发需要
 cp .env.example .env               # Windows: copy .env.example .env
 ```
 
@@ -180,8 +183,8 @@ PYTHONPATH=. python scripts/verify_seed.py   # Windows PowerShell: $env:PYTHONPA
 ### 4. 测试
 
 ```bash
-# 后端（pytest）
-cd backend && python -m pytest -q        # 当前 12 项用例通过
+# 后端（pytest，需先安装 requirements-dev.txt）
+cd backend && python -m pytest -q        # 当前 18 项用例通过
 
 # 前端（vitest，含 parseChapterBlocks 正文分块）
 cd frontend && npm test
@@ -190,7 +193,7 @@ cd frontend && npm test
 cd frontend && npm run build       # vue-tsc -b && vite build
 ```
 
-后端测试覆盖注册码原子消费、鉴权与密钥、章节正文分块、签到与个人资料、管理后台功能等场景（见 [`backend/tests/`](./backend/tests/)）。CI 配置见 [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)。
+后端测试覆盖注册码原子消费、鉴权与密钥、章节正文分块、签到与个人资料、管理后台功能与配置解析等场景（见 [`backend/tests/`](./backend/tests/)）。CI 配置见 [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)。
 
 ### 5. 生产部署（Ubuntu，可选）
 
